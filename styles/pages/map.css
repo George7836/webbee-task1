@@ -1,0 +1,81 @@
+.map {
+  width: 100%;
+  background-color: var(--white);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
+  padding: 18px 32px 32px 32px;
+}
+
+@media (max-width: 800px) {
+  .map {
+    padding: 16px;
+  }
+}
+
+.map__top {
+  padding-bottom: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.map__title {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--black);
+}
+
+.map__btn:not(:last-of-type) {
+  margin-right: 8px;
+}
+
+.map__field {
+  height: 480px;
+}
+
+@media (max-width: 1000px) {
+  .map__field {
+    height: 300px;
+  }
+}
+
+.preloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+
+.preloader .remove {
+  display: none;
+}
+
+@media (max-width: 1000px) {
+  .preloader {
+    height: 300px;
+  }
+}
+
+.preloader svg {
+  animation: preloader-rotate 1.5s infinite linear;
+}
+
+@media (max-width: 1000px) {
+  .preloader svg {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 500px) {
+  .preloader svg {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@keyframes preloader-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}

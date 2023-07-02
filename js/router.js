@@ -1,3 +1,5 @@
+import { main } from "./map.js";
+
 const routes = {
     '/index.html': '/pages/activity.html',
     '/': '/pages/activity.html',
@@ -12,6 +14,10 @@ const router = async () => {
 	const route = routes[path]
 	const html = await fetch(route).then((data) => data.text())
 	document.querySelector('.main').innerHTML = html
+
+    if(window.location.hash === '#/map') {
+        main()
+    }
 };
 
 window.addEventListener('hashchange', router);
