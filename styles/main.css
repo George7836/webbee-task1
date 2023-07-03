@@ -4,6 +4,7 @@
 @import './vars.css';
 @import './components/header.css';
 @import './pages/map.css';
+@import './pages/timer.css';
 
 html {
 	overflow-x: hidden;

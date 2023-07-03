@@ -1,4 +1,5 @@
 import { main } from "./map.js";
+import { setValuesInDOM } from "./timer.js";
 
 const routes = {
     '/index.html': '/pages/activity.html',
@@ -17,6 +18,10 @@ const router = async () => {
 
     if(window.location.hash === '#/map') {
         main()
+    }
+    if(window.location.hash === '#/time') {
+        let values = JSON.parse(sessionStorage.getItem('timer'))
+        setValuesInDOM(values.h, values.m, values.s)
     }
 };
 
