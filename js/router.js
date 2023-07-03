@@ -2,10 +2,10 @@ import { loadMap } from "./map.js";
 import { setValuesInDOM } from "./timer.js";
 
 const routes = {
-    '/webbee-task1/index.html': '/pages/activity.html',
-    '/webbee-task1/': '/pages/activity.html',
-    '/webbee-task1/map': '/pages/map.html',
-    '/webbee-task1/time': '/pages/time.html'
+    '/webbee-task1/index.html': '/webbee-task1/pages/activity.html',
+    '/webbee-task1/': '/webbee-task1/pages/activity.html',
+    '/webbee-task1/map': '/webbee-task1/pages/map.html',
+    '/webbee-task1/time': '/webbee-task1/pages/time.html'
 }
 
 window.addEventListener('click', (e) => {
