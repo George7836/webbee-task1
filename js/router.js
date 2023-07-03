@@ -26,10 +26,10 @@ const handleLocation = async () => {
     const html = await fetch(route).then((data) => data.text())
     document.querySelector('.main').innerHTML = html
 
-    if(window.location.pathname === '/map') {
+    if(window.location.pathname.includes('/map')) {
         loadMap()
     }
-    if(window.location.pathname === '/time') {
+    if(window.location.pathname.includes('/time')) {
         let values = JSON.parse(sessionStorage.getItem('timer'))
         setValuesInDOM(values.h, values.m, values.s)
     }

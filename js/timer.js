@@ -41,7 +41,7 @@ const run = () => {
 
   sessionStorage.setItem('timer', JSON.stringify({h: updatedH, m: updatedM, s: updatedS}))
   
-  if(window.location.pathname === '/time') {
+  if(window.location.pathname.includes('/time')) {
     setValuesInDOM(updatedH, updatedM, updatedS)
   }
 }
