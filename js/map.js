@@ -1,6 +1,6 @@
 let map;
 
-export async function main() {
+export async function loadMap() {
     deletePreloader()
     await ymaps3.ready;
 

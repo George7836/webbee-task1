@@ -1,4 +1,4 @@
-import { main } from "./map.js";
+import { loadMap } from "./map.js";
 import { setValuesInDOM } from "./timer.js";
 
 const routes = {
@@ -8,22 +8,34 @@ const routes = {
     '/time': '/pages/time.html'
 }
 
-const parseLocation = () => location.hash.slice(1).toLowerCase() || '/index.html';
-
-const router = async () => {
-	const path = parseLocation();
-	const route = routes[path]
-	const html = await fetch(route).then((data) => data.text())
-	document.querySelector('.main').innerHTML = html
-
-    if(window.location.hash === '#/map') {
-        main()
+window.addEventListener('click', (e) => {
+    if(e.target.tagName === 'A') {
+        handleRoute(e)
     }
-    if(window.location.hash === '#/time') {
+    e.preventDefault()
+}) 
+
+const handleRoute = (e) => {
+    window.history.pushState({}, "", e.target.href)
+    handleLocation()
+}
+
+const handleLocation = async () => {
+    const path = window.location.pathname
+    const route = routes[path]
+    const html = await fetch(route).then((data) => data.text())
+    document.querySelector('.main').innerHTML = html
+
+    if(window.location.pathname === '/map') {
+        loadMap()
+    }
+    if(window.location.pathname === '/time') {
         let values = JSON.parse(sessionStorage.getItem('timer'))
         setValuesInDOM(values.h, values.m, values.s)
     }
-};
+}
 
-window.addEventListener('hashchange', router);
-window.addEventListener('load', router);
+window.onpopstate = handleLocation;
+window.route = handleRoute;
+
+handleLocation();
