@@ -1,5 +1,5 @@
 import { loadMap } from "./map.js";
-import { setValuesInDOM } from "./timer.js";
+import { startTimer } from "./timer.js";
  
 let base = basename(window.location.pathname)
 
@@ -33,8 +33,7 @@ const handleLocation = async (link = '/') => {
         loadMap()
     }
     if(path.includes('/time')) {
-        let values = JSON.parse(sessionStorage.getItem('timer'))
-        setValuesInDOM(values.h, values.m, values.s)
+        startTimer()
     }
 }
 
