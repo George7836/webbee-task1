@@ -11,15 +11,15 @@ const routes = {
 
 window.addEventListener('click', (e) => {
     if(e.target.classList.contains('nav__link')) {
-        handleRoute(e)
+        handleRoute(e.target.pathname)
     }
     e.preventDefault()
 }) 
 
-const handleRoute = (e) => {
-    const href = `${window.location.origin}${base}${e.target.pathname}`
+export const handleRoute = (path) => {
+    const href = `${window.location.origin}${base}${path}`
     window.history.pushState({}, "", href)
-    handleLocation(e.target.pathname)
+    handleLocation(path)
 }
 
 const handleLocation = async (link = '/') => {
@@ -45,4 +45,5 @@ function basename(pathname) {
     return `/${base}`
 }
 
+window.handleRoute = handleRoute
 handleLocation();
