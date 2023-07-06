@@ -2,7 +2,6 @@ import { loadMap } from "./map.js";
 import { startTimer } from "./timer.js";
  
 let base = basename(window.location.pathname)
-
 const routes = {
     '/index.html': '/pages/activity.html',
     '/': '/pages/activity.html',
