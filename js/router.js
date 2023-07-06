@@ -1,11 +1,13 @@
 import { loadMap } from "./map.js";
 import { setValuesInDOM } from "./timer.js";
+ 
+let base = basename(window.location.pathname)
 
 const routes = {
-    '/webbee-task1/index.html': '/webbee-task1/pages/activity.html',
-    '/webbee-task1/': '/webbee-task1/pages/activity.html',
-    '/webbee-task1/map': '/webbee-task1/pages/map.html',
-    '/webbee-task1/time': '/webbee-task1/pages/time.html'
+    '/index.html': '/pages/activity.html',
+    '/': '/pages/activity.html',
+    '/map': '/pages/map.html',
+    '/time': '/pages/time.html'
 }
 
 window.addEventListener('click', (e) => {
@@ -16,23 +18,33 @@ window.addEventListener('click', (e) => {
 }) 
 
 const handleRoute = (e) => {
-    window.history.pushState({}, "", e.target.href)
-    handleLocation()
+    const href = `${window.location.origin}${base}${e.target.pathname}`
+    window.history.pushState({}, "", href)
+    handleLocation(e.target.pathname)
 }
 
-const handleLocation = async () => {
-    const path = window.location.pathname
-    const route = routes[path]
-    const html = await fetch(route).then((data) => data.text())
+const handleLocation = async (link = '/') => {
+    let path = window.location.pathname
+    const route = routes[link]
+    const html = await fetch(`${base}${route}`).then((data) => data.text())
     document.querySelector('.main').innerHTML = html
 
-    if(window.location.pathname.includes('/map')) {
+    if(path.includes('/map')) {
         loadMap()
     }
-    if(window.location.pathname.includes('/time')) {
+    if(path.includes('/time')) {
         let values = JSON.parse(sessionStorage.getItem('timer'))
         setValuesInDOM(values.h, values.m, values.s)
     }
+}
+
+function basename(pathname) {
+    if(pathname.length <= 1) {
+        return ''
+    }
+    let arr = pathname.split('/')
+    let base = arr.slice(0, arr.length - 1).join('')
+    return `/${base}`
 }
 
 window.onpopstate = handleLocation;
