@@ -45,5 +45,4 @@ function basename(pathname) {
     return `/${base}`
 }
 
-window.handleRoute = handleRoute
 handleLocation();
