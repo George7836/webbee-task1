@@ -11,7 +11,7 @@ const routes = {
 }
 
 window.addEventListener('click', (e) => {
-    if(e.target.tagName === 'A') {
+    if(e.target.classList.contains('nav__link')) {
         handleRoute(e)
     }
     e.preventDefault()
@@ -46,8 +46,5 @@ function basename(pathname) {
     let base = arr.slice(0, arr.length - 1).join('')
     return `/${base}`
 }
-
-window.onpopstate = handleLocation;
-window.route = handleRoute;
 
 handleLocation();
