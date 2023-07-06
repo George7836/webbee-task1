@@ -22,7 +22,7 @@ export const handleRoute = (path) => {
     handleLocation(path)
 }
 
-const handleLocation = async (link = '/') => {
+const handleLocation = async (link) => {
     let path = window.location.pathname
     const route = routes[link]
     const html = await fetch(`${base}${route}`).then((data) => data.text())
@@ -45,4 +45,9 @@ function basename(pathname) {
     return `/${base}`
 }
 
-handleLocation();
+function getEndOfPathName(pathname) {
+    return pathname.split('/').reverse()[0];
+}
+
+let page = getEndOfPathName(window.location.pathname)
+handleLocation(`/${page}`);
