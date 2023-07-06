@@ -1,4 +1,4 @@
-import { handleRoute } from "./router";
+import { handleRoute } from "./router.js";
 
 const path = window.location.pathname
 if(path.includes('/map')) {
