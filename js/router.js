@@ -50,4 +50,4 @@ function getEndOfPathName(pathname) {
 }
 
 let page = getEndOfPathName(window.location.pathname)
-handleLocation(`/${page}`);
+handleLocation(`/${page}`)
