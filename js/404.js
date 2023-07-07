@@ -1,8 +1,7 @@
-import { handleRoute } from "./router.js";
-
 const path = window.location.pathname
-if(path.includes('/map')) {
-  handleRoute('/map')
-} else if(path.includes('/time')) {
-  handleRoute('/time')
+const notFoundTitle = document.querySelector('.not-found')
+if(path.includes('/map') || path.includes('/time')) {
+  notFoundTitle.style.display = 'none'
+} else {
+  notFoundTitle.style.display = 'block'
 }

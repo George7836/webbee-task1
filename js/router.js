@@ -36,7 +36,7 @@ const handleLocation = async (link) => {
     }
 }
 
-function basename(pathname) {
+export function basename(pathname) {
     if(pathname.length <= 1) {
         return ''
     }
