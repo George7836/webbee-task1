@@ -1,4 +1,4 @@
-import { getBasePath } from './router.js'
+import { addListenersToLinks, getBasePath } from './router.js'
 const root = document.getElementById('root')
 
 async function getHeader() {
@@ -7,6 +7,7 @@ async function getHeader() {
     .then((data) => data.text()
     .catch((err) => console.error(err)))
   root.insertAdjacentHTML('afterbegin', data)
+  addListenersToLinks()
 }
 
 getHeader()

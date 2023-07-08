@@ -1,12 +1,16 @@
 import { loadMap } from "./map.js";
 import { startTimer } from "./timer.js";
 
-window.addEventListener('click', (e) => {
-    if(e.target.classList.contains('nav__link')) {
-        handleRoute(e.target.pathname)
+export function addListenersToLinks() {
+    const navLinks = document.querySelectorAll('.nav__link')
+    for(let i = 0; i < navLinks.length; i++) {
+        navLinks[i].addEventListener('click', (e) => {
+            handleRoute(e.target.pathname)
+            e.preventDefault()
+        })
     }
-    e.preventDefault()
-}) 
+}
+addListenersToLinks()
 
 let base = getBasePath(window.location.pathname)
 const routes = {
