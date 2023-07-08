@@ -11,7 +11,7 @@ let interv
 
 export function startTimer() {
   interv = setInterval(() => {
-    if(!window.location.pathname.includes('/time')) {
+    if(document.querySelector('.page-container') === null) {
       clearInterval(interv)
     }
     const currentTime = Date.now() - start

@@ -1,20 +1,21 @@
 import { loadMap } from "./map.js";
 import { startTimer } from "./timer.js";
- 
-let base = basename(window.location.pathname)
+const navLinks = document.querySelectorAll('.nav__link')
+
+for(let i = 0; i < navLinks.length; i++) {
+    navLinks[i].addEventListener('click', (e) => {
+        e.preventDefault()
+        handleRoute(e.target.pathname)
+    })
+}
+
+let base = getBasePath(window.location.pathname)
 const routes = {
     '/index.html': '/pages/activity.html',
     '/': '/pages/activity.html',
     '/map': '/pages/map.html',
     '/time': '/pages/time.html'
 }
-
-window.addEventListener('click', (e) => {
-    if(e.target.classList.contains('nav__link')) {
-        handleRoute(e.target.pathname)
-    }
-    e.preventDefault()
-}) 
 
 export const handleRoute = (path) => {
     const href = `${window.location.origin}${base}${path}`
@@ -43,7 +44,7 @@ const handleLocation = async (link) => {
     }
 }
 
-export function basename(pathname) {
+export function getBasePath(pathname) {
     if(pathname.length <= 1) {
         return ''
     }
@@ -56,5 +57,4 @@ function getEndOfPathName(pathname) {
     return pathname.split('/').reverse()[0];
 }
 
-let page = getEndOfPathName(window.location.pathname)
-handleLocation(`/${page}`)
+handleLocation(`/${getEndOfPathName(window.location.pathname)}`)
