@@ -1,13 +1,16 @@
 import { loadMap } from "./map.js";
 import { startTimer } from "./timer.js";
-const navLinks = document.querySelectorAll('.nav__link')
 
-for(let i = 0; i < navLinks.length; i++) {
-    navLinks[i].addEventListener('click', (e) => {
-        handleRoute(e.target.pathname)
-        e.preventDefault()
-    })
+function addListeners() {
+    const navLinks = document.querySelectorAll('.nav__link')
+    for(let i = 0; i < navLinks.length; i++) {
+        navLinks[i].addEventListener('click', (e) => {
+            handleRoute(e.target.pathname)
+            e.preventDefault()
+        })
+    }
 }
+addListeners()
 
 let base = getBasePath(window.location.pathname)
 const routes = {
