@@ -4,8 +4,8 @@ const navLinks = document.querySelectorAll('.nav__link')
 
 for(let i = 0; i < navLinks.length; i++) {
     navLinks[i].addEventListener('click', (e) => {
-        e.preventDefault()
         handleRoute(e.target.pathname)
+        e.preventDefault()
     })
 }
 
