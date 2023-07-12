@@ -1,11 +1,3 @@
-let hours
-let minutes
-let seconds
-let time = {
-  hours: 0,
-  minutes: 0, 
-  seconds: 0 
-}
 const start = Date.now()
 let interv 
 
@@ -22,11 +14,12 @@ export function startTimer() {
 startTimer()
 
 function addTime(curr) {
-  time.hours = Math.floor((curr % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  time.minutes = Math.floor((curr % (1000 * 60 * 60)) / (1000 * 60))
-  time.seconds = Math.floor((curr % (1000 * 60)) / 1000)
+  const hours = formatValue(Math.floor((curr % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)))
+  const minutes = formatValue(Math.floor((curr % (1000 * 60 * 60)) / (1000 * 60)))
+  const seconds = formatValue(Math.floor((curr % (1000 * 60)) / 1000))
+
   if(window.location.pathname.includes('/time')) {
-    setValuesInDOM(time.hours, time.minutes, time.seconds)
+    document.querySelector('.timer').innerText = `${hours}:${minutes}:${seconds}`
   }
 }
 
@@ -38,14 +31,8 @@ const isVisible = () => {
   }
 }
 
-function setValuesInDOM(h, m, s) {
-  hours = document.querySelector('.hours')
-  minutes = document.querySelector('.minutes')
-  seconds = document.querySelector('.seconds')
-
-  hours.innerText = h >= 10 ? h : '0' + h
-  minutes.innerText = m >= 10 ? m : '0' + m
-  seconds.innerText = s >= 10 ? s : '0' + s
+function formatValue(value) {
+  return value >= 10 ? value : '0' + value
 }
 
 window.addEventListener('visibilitychange', isVisible)
