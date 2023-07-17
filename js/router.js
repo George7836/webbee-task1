@@ -28,15 +28,9 @@ export const handleRoute = (path) => {
 
 const handleLocation = async (link) => {
     let path = window.location.pathname
-    const route = routes[link]
+    const route = routes[link] || '/pages/not-found.html'
     const html = await fetch(`${base}${route}`)
-        .then((data) => {
-            if (!data.ok) {
-                throw new Error('Error occurred!')
-            }
-            return data.text()
-        })
-        .catch(() => '<h2 class="not-found">404. Not Found</h2>')
+        .then((data) => data.text())
     document.querySelector('.main').innerHTML = html
 
     if(path.includes('/map')) {
