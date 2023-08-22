@@ -1,0 +1,20 @@
+{
+  "homepage": "http://George7836.github.io/webbee-task1",
+  "name": "webbee-task1",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/George7836/webbee-task1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/George7836/webbee-task1/issues"
+  }
+}
